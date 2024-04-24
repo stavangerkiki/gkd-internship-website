@@ -1,8 +1,8 @@
-<?php require basePath('views/partials/head.php');?>
-<?php require basePath('views/partials/navbar.php');?>
-<?php require basePath('views/partials/showcase-search.php');?>
-<?php require basePath('views/partials/bottom-banner.php');?>
-
+<?php loadPartial('head');?>
+<?php loadPartial('navbar');?>
+<?php loadPartial('showcase-search');?>
+<?php loadPartial('bottom-banner');?>
+<?php loadPartial('footer');?>
 <!-- 实习列表 -->
 <section>
     <div class="container mx-auto p-4 mt-4">
@@ -76,4 +76,4 @@
             查看所有实习
         </a>
 
-<?php require basePath('views/partials/footer.php');?>
+
