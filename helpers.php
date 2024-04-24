@@ -16,9 +16,22 @@ if (file_exists($partialPath)) {
 function loadView($name)
 {
     $viewPath = basePath("views/{$name}.view.php");
+
     if (file_exists($viewPath)){
     require $viewPath;
 } else {
         echo "{$name}视图不存在!";
 }
     }
+
+function inspect($value)
+{
+    echo '<pre>';var_dump($value);echo '<pre>';
+}
+
+function inspectAndDie($value)
+{
+    echo '<pre>';
+    die(var_dump($value));
+    echo '<pre>';
+}
