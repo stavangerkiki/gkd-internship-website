@@ -1,70 +1,7 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha384-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="../public/css/style.css" />
-    <title>广科大校内实习网站</title>
-</head>
-<body class="bg-gray-100">
-<!-- 导航栏 -->
-<header class="bg-blue-900 text-white p-4">
-    <div class="container mx-auto flex justify-between items-center">
-        <h1 class="text-3xl font-semibold">
-            <a href="index.html">广科大校内实习网站</a>
-        </h1>
-        <nav class="space-x-4">
-            <a href="login.html" class="text-white hover:underline">登录</a>
-            <a href="register.html" class="text-white hover:underline">注册</a>
-            <a
-                href="post-job.html"
-                class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded hover:shadow-md transition duration-300"
-            ><i class="fa fa-edit"></i> 发布实习</a
-            >
-        </nav>
-    </div>
-</header>
-
-<!-- 展示区 -->
-<section
-    class="showcase relative bg-cover bg-center bg-no-repeat h-72 flex items-center"
->
-    <div class="overlay"></div>
-    <div class="container mx-auto text-center z-10">
-        <h2 class="text-4xl text-white font-bold mb-4">找到你的梦想实习</h2>
-        <form class="mb-4 block mx-5 md:mx-auto">
-            <input
-                type="text"
-                name="keywords"
-                placeholder="关键词"
-                class="w-full md:w-auto mb-2 px-4 py-2 focus:outline-none"
-            />
-            <input
-                type="text"
-                name="location"
-                placeholder="位置"
-                class="w-full md:w-auto mb-2 px-4 py-2 focus:outline-none"
-            />
-            <button
-                class="w-full md:w-auto bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 focus:outline-none"
-            >
-                <i class="fa fa-search"></i> 搜索
-            </button>
-        </form>
-    </div>
-</section>
-
-<!-- 顶部横幅 -->
-<section class="bg-blue-900 text-white py-6 text-center">
-    <div class="container mx-auto">
-        <h2 class="text-3xl font-semibold">解锁你的职业潜能</h2>
-        <p class="text-lg mt-2">
-            发现完美的实习机会
-        </p>
-    </div>
-</section>
+<?php require basePath('views/partials/head.php');?>
+<?php require basePath('views/partials/navbar.php');?>
+<?php require basePath('views/partials/showcase-search.php');?>
+<?php require basePath('views/partials/bottom-banner.php');?>
 
 <!-- 实习列表 -->
 <section>
@@ -139,25 +76,4 @@
             查看所有实习
         </a>
 
-
-        <!-- 底部横幅 -->
-        <section class="container mx-auto my-6">
-            <div
-                class="bg-blue-800 text-white rounded p-4 flex items-center justify-between"
-            >
-                <div>
-                    <h2 class="text-xl font-semibold">寻找实习生？</h2>
-                    <p class="text-gray-200 text-lg mt-2">
-                        现在就发布你的实习职位，找到理想的候选人。
-                    </p>
-                </div>
-                <a
-                    href="post-job.html"
-                    class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded hover:shadow-md transition duration-300"
-                >
-                    <i class="fa fa-edit"></i> 发布实习
-                </a>
-            </div>
-        </section>
-</body>
-</html>
+<?php require basePath('views/partials/footer.php');?>
