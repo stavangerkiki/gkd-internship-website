@@ -5,7 +5,7 @@ function basePath($path) {
 
 function loadPartial($name)
 {
-    $partialPath = basePath("views/partials/{$name}.php");
+    $partialPath = basePath("App/views/partials/{$name}.php");
 if (file_exists($partialPath)) {
     require $partialPath;
 } else {
@@ -15,14 +15,22 @@ if (file_exists($partialPath)) {
 
 function loadView($name,$data = [])
 {
-    $viewPath = basePath("views/{$name}.view.php");
+    $viewPath = basePath("App/views/{$name}.view.php");
 
     if (file_exists($viewPath)){
+//        inspect($data);
         extract($data);
-    require $viewPath;
-} else {
-        echo "{$name}视图不存在!";
-}
+//        inspect($listings);
+//        echo "数据提取后的变量：<br>";
+//        foreach ($data as $key => $value) {
+//            echo "$key: $value<br>";
+//        }
+        require $viewPath;
+//        echo "<br>视图加载后的变量：<br>";
+
+    } else {
+            echo "{$name}视图不存在!";
+    }
     }
 
 function inspect($value)

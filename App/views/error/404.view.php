@@ -9,7 +9,7 @@
         <p class="text-center text-2xl mb-4">
             此页面不存在
     </p>
-    s/div>
+    </div>
     </section>
 <?php loadPartial('bottom-banner');?>
 <?php loadPartial('footer');?>
