@@ -2,10 +2,16 @@
 
 
 global $router;
-$router->addGet('/','HomeController@index');
-//$router->addGet('/listings','controllers/listings/index.php');
-//$router->addGet('/listings/create','controllers/listings/create.php');
-//$router->addGet('/listing','controllers/listings/show.php');
-$router->addGet('/listings','ListingController@index');
-$router->addGet('/listings/create','ListingController@create');
-$router->addGet('/listing/{id}','ListingController@show');
+$router->addGet('/public/', 'HomeController@index');
+//$router->addGet('/public/listings', 'controllers/listings/index.php');
+//$router->addGet('/public/listings/publish', 'controllers/listings/publish.php');
+//$router->addGet('/public/listings/detail', 'controllers/listings/detail.php');
+$router->addGet('/public/listings', 'ListingController@index');
+$router->addGet('/public/listings/publish', 'ListingController@publish');
+$router->addGet('/public/listings/{id}', 'ListingController@detail');
+$router->addPost('/public/listings', 'ListingController@store');
+$router->addDelete('/public/listings/{id}', 'ListingController@destroy');
+$router->addGet('/public/listings/edit/{id}', 'ListingController@edit');
+$router->addPut('/public/listings/{id}', 'ListingController@update');
+?>
+ost('/listings','ListingController@store');

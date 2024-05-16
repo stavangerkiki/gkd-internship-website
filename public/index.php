@@ -1,15 +1,9 @@
 <?php
+session_start();
 require '../vendor/autoload.php';
 require '../helpers.php';
 use Framework\Router;
 
-// 如果需要，可以启用自动加载器
-// spl_autoload_register(function($class){
-//    $path = basePath('Framework/'.$class.'.php');
-//    if(file_exists($path)){
-//        require $path;
-//    }
-// });
 
 $router = new Router();
 $routes = require basePath('routes.php');
