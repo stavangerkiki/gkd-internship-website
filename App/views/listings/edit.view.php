@@ -7,7 +7,7 @@
             <h2 class="text-4xl text-center font-bold mb-4">Create Job Listing</h2>
             <form method="POST" action="/public/listings">
                 <h2 class="text-2xl font-bold mb-6 text-center text-gray-500">
-                    Job Information
+                    职位信息
                 </h2>
                 <?php if (isset($errors)): ?>
                     <?php foreach ($errors as $error): ?>
@@ -15,45 +15,45 @@
                     <?php endforeach; ?>
                 <?php endif; ?>
                 <div class="mb-4">
-                    <input type="text" name="title" placeholder="Job Title" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['title']) ? $listing['title'] : '' ?>"/>
+                    <input type="text" name="title" placeholder="职位标题" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['title']) ? $listing['title'] : '' ?>"/>
                 </div>
                 <div class="mb-4">
-                    <textarea name="description" placeholder="Job Description" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['description']) ? $listing['description'] : '' ?>"></textarea>
+                    <textarea name="description" placeholder="职位描述" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['description']) ? $listing['description'] : '' ?>"></textarea>
                 </div>
                 <div class="mb-4">
-                    <input type="text" name="salary" placeholder="Annual Salary" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['salary']) ? $listing['salary'] : '' ?>"/>
+                    <input type="text" name="salary" placeholder="年薪" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['salary']) ? $listing['salary'] : '' ?>"/>
                 </div>
                 <div class="mb-4">
-                    <input type="text" name="requirements" placeholder="Requirements" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['requirements']) ? $listing['requirements'] : '' ?>"/>
+                    <input type="text" name="requirements" placeholder="需求" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['requirements']) ? $listing['requirements'] : '' ?>"/>
                 </div>
                 <div class="mb-4">
-                    <input type="text" name="benefits" placeholder="Benefits" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['benefits']) ? $listing['benefits'] : '' ?>"/>
+                    <input type="text" name="benefits" placeholder="福利" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['benefits']) ? $listing['benefits'] : '' ?>"/>
                 </div>
 
                 <div class="mb-4">
-                    <input type="text" name="tag" placeholder="Tag" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['tags']) ? $listing['tags'] : '' ?>"/>
+                    <input type="text" name="tag" placeholder="标签" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['tags']) ? $listing['tags'] : '' ?>"/>
                 </div>
 
                 <h2 class="text-2xl font-bold mb-6 text-center text-gray-500">
                     Company Information & Location
                 </h2>
                 <div class="mb-4">
-                    <input type="text" name="company" placeholder="Company Name" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['company']) ? $listing['company'] : '' ?>"/>
+                    <input type="text" name="company" placeholder="公司名" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['company']) ? $listing['company'] : '' ?>"/>
                 </div>
                 <div class="mb-4">
-                    <input type="text" name="address" placeholder="Address" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['address']) ? $listing['address'] : '' ?>"/>
+                    <input type="text" name="address" placeholder="地址" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['address']) ? $listing['address'] : '' ?>"/>
                 </div>
                 <div class="mb-4">
-                    <input type="text" name="city" placeholder="City" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['city']) ? $listing['city'] : '' ?>"/>
+                    <input type="text" name="city" placeholder="城市" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['city']) ? $listing['city'] : '' ?>"/>
                 </div>
                 <div class="mb-4">
-                    <input type="text" name="state" placeholder="State" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['state']) ? $listing['state'] : '' ?>"/>
+                    <input type="text" name="province" placeholder="省份" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['province']) ? $listing['province'] : '' ?>"/>
                 </div>
                 <div class="mb-4">
-                    <input type="text" name="phone" placeholder="Phone" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['phone']) ? $listing['phone'] : '' ?>"/>
+                    <input type="text" name="phone" placeholder="电话" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['phone']) ? $listing['phone'] : '' ?>"/>
                 </div>
                 <div class="mb-4">
-                    <input type="email" name="email" placeholder="Email to receive applications" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['email']) ? $listing['email'] : '' ?>"/>
+                    <input type="email" name="email" placeholder="Email" class="w-full px-4 py-2 border rounded focus:outline-none" value="<?= isset($listing['email']) ? $listing['email'] : '' ?>"/>
                 </div>
                 <button class="w-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 my-3 rounded focus:outline-none">
                     Save

@@ -2,6 +2,9 @@
 namespace App\controllers;
 use Framework\Database;
 use Framework\Validation;
+use Framework\Session;
+use Framework\Authorisation;
+use Framework\MiddleWare\Authorise;
 class ListingController{
     protected $db;
     public function __construct(){
@@ -9,7 +12,7 @@ class ListingController{
         $this->db = new Database($config);
     }
     public function index(){
-        $listings = $this->db->query('SELECT * FROM listing')->fetchAll();
+        $listing = $this->db->query('SELECT * FROM listing ORDER BY created_at DESC')->fetchAll();
         loadView('listings/index', ['listings' => $listings]);
     }
     public function create()
@@ -32,7 +35,7 @@ class ListingController{
         $alloweFields = ['title','description','salary','tags','company'
         ,'address','city','province','phone','email','requirements','benefits'];
         $newListingData = array_intersect_key($_POST,array_fill($alloweFields,null));
-        $newListingData['user_id'] = 1;
+        $newListingData['user_id'] = Session::get('user')['id'];
         $newListingData = array_map('sanitize',$newListingData);
         $requiredFields = ['title','description','email','city','province'];
         $errors = [];
@@ -62,6 +65,7 @@ class ListingController{
             $values = implode(',',$values);
             $query = "INSERT INTO listing({$fields}) VALUES ({$values})";
             $this->db->query($query,$newListingData);
+            Session::setFlashMessage('success_message','已成功创建职位！');
             redirect('/listings');
         }
     }
@@ -74,6 +78,11 @@ class ListingController{
             ErrorController::notFound('职位不存在');
             return;
         }
+        if (!Authorisation::isOwner($listing['user_id'])) {
+            Session::setFlashMessage('error_message', '你没有权限删除职位!');
+            return redirect('/public/listings/' . $listing['id']);
+        }
+
         $this->db->query('DELETE FROM listing WHERE id = :id',$params);
         $_SESSION['success_message'] = "删除职位成功";
         redirect('/listings');
@@ -86,7 +95,7 @@ class ListingController{
         ];
         $listing = $this->db->query('SELECT * FROM listing WHERE id = :id', $params)->fetch();
         if (!$listing) {
-            ErrorController::notFound("The occupation does not exist!");
+            ErrorController::notFound("岗位不存在!");
             return;
         }
         loadView('listings/edit', [
@@ -131,9 +140,33 @@ class ListingController{
             $updateQuery = "UPDATE listing SET {$updateFields} WHERE id = :id";
             $updateValues['id'] = $id;
             $this->db->query($updateQuery, $updateValues);
-            $_SESSION['success_message'] = "The occupation was successfully updated!";
+            $_SESSION['success_message'] = "职位信息已经更新!";
             redirect('/public/listings/'.$id);
         }
+    }
+
+    public function search()
+    {
+        $keywords = isset($_GET['keywords']) ? $_GET['keywords'] : '';
+        $location = isset($_GET['location']) ? $_GET['location'] : '';
+
+        $query = "SELECT * FROM listing WHERE  
+                          (title LIKE :$keywords OR description LIKE :$keywords OR
+                           tags LIKE :$keywords OR company LIKE :$keywords) AND 
+                          (city LIKE :$keywords OR province LIKE :location)";
+
+        $params = [
+          'keywords' => "%{$keywords}%",
+          'location' => "%{$location}%",
+        ];
+
+        $listings = $this->db->query($query,$params)->fetchAll();
+
+        loadView('listings/index', [
+            'listings' => $listings,
+            'keywords' => $keywords,
+            'location' => $location
+        ]);
     }
 
 }
